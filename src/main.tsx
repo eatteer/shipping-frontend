@@ -1,0 +1,24 @@
+import { Toaster } from "@/components/ui/sonner";
+import { AuthProvider } from "@/contexts/auth/auth-provider";
+import { LoaderProvider } from "@/contexts/loader/loader-provider";
+import { router } from "@/router.tsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { RouterProvider } from "react-router";
+import "./index.css";
+
+const queryClient = new QueryClient();
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <LoaderProvider>
+        <AuthProvider>
+          <RouterProvider router={router} />
+          <Toaster />
+        </AuthProvider>
+      </LoaderProvider>
+    </QueryClientProvider>
+  </StrictMode>
+);
