@@ -1,0 +1,30 @@
+# Node.js dependencies (should be installed inside the container)
+node_modules
+
+# Build output directories (should be created inside the container)
+dist
+build
+
+# Environment variable files (do not copy secrets into the image)
+.env
+.env.*
+
+# Log files
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# OS-specific files
+.DS_Store
+
+# Git repository and configuration files
+.git
+.gitignore
+
+# Docker and Compose files (not needed in the image)
+docker-compose.yml
+Dockerfile
+
+# Documentation files
+*.md
