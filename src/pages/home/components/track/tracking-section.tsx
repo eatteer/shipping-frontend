@@ -15,12 +15,13 @@ export function TrackingSection() {
   const {
     data: shipmentTrackingDetails,
     error,
-    isLoading,
+    isFetching,
   } = useQuery({
     queryKey: ["get-shipment-tracking-details", shipmentId],
     queryFn: () => getShipmentTrackingDetails({ shipmentId }),
     enabled: !!shipmentId,
     gcTime: 0,
+    // placeholderData: keepPreviousData,
   });
 
   useEffect(() => {
@@ -31,12 +32,12 @@ export function TrackingSection() {
   }, [error]);
 
   useEffect(() => {
-    if (isLoading) {
+    if (isFetching) {
       loader.show();
     } else {
       loader.hide();
     }
-  }, [isLoading]);
+  }, [isFetching]);
 
   return (
     <section className="space-y-6">

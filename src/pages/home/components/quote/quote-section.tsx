@@ -9,7 +9,7 @@ import {
   type QuotedShipment as QuotedShipmentType,
 } from "@/services/quote-shipment";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export type QuoteSectionProps = Readonly<{
@@ -27,7 +27,7 @@ export function QuoteSection({
 
   const loader = useLoader();
 
-  const { data: cities } = useQuery({
+  const { data: cities, isLoading } = useQuery({
     queryKey: ["get-all-cities"],
     queryFn: getAllCities,
     initialData: [],
@@ -71,6 +71,14 @@ export function QuoteSection({
       loader.hide();
     },
   });
+
+  useEffect(() => {
+    if (isLoading) {
+      loader.show();
+    } else {
+      loader.hide();
+    }
+  }, [isLoading]);
 
   return (
     <section className="space-y-6">
