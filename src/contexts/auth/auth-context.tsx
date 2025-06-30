@@ -1,6 +1,7 @@
 import { createContext } from "react";
 
 export type User = {
+  token: string;
   email: string;
 };
 

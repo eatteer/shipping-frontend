@@ -1,6 +1,6 @@
 import { api } from "@/lib/api";
 
-export type SignInResponse = {
+export type SignInCredentials = {
   token: string;
 };
 
@@ -11,7 +11,7 @@ export async function signIn({
   email: string;
   password: string;
 }) {
-  const response = await api.post<SignInResponse>("/auth/authenticate", {
+  const response = await api.post<SignInCredentials>("/auth/authenticate", {
     email,
     password,
   });

@@ -4,13 +4,26 @@ import { getApplicationError } from "@/lib/get-application-error";
 import { SignInForm } from "@/pages/sign-in/sign-in-form";
 import { signIn } from "@/services/sign-in";
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router";
 import { toast } from "sonner";
 
 export function SignIn() {
   const auth = useAuth();
   const loader = useLoader();
+
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      const expired = searchParams.get("expired");
+
+      if (expired === "true") {
+        toast.warning("Your session has expired. Please sign in again");
+      }
+    }, 0);
+  }, [searchParams]);
 
   const mutation = useMutation({
     mutationKey: ["sign-in"],

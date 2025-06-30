@@ -5,14 +5,14 @@ import {
 } from "@/contexts/auth/auth-context";
 import { useEffect, useState, type PropsWithChildren } from "react";
 
-const LOCAL_STORAGE_USER_KEY = "user";
+export const LOCAL_STORAGE_USER_KEY = "user";
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<User | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = async ({ token, email }: { token: string; email: string }) => {
-    setUser({ email });
+    setUser({ token, email });
 
     setIsAuthenticated(true);
 
