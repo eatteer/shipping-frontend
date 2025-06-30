@@ -37,9 +37,9 @@ export function QuotedShipment({
             </div>
             <div className="pl-6 text-sm">
               <p>
-                {quotedShipment.packageLengthCm}" ×{" "}
-                {quotedShipment.packageWeightKg}" ×{" "}
-                {quotedShipment.packageHeightCm}"
+                {quotedShipment.packageWidthCm}" ×{" "}
+                {quotedShipment.packageHeightCm}" ×{" "}
+                {quotedShipment.packageLengthCm}"
               </p>
             </div>
           </div>

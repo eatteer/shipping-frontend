@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import useWebSocket from "react-use-websocket";
 import type { ShipmentStatusUpdate } from "@/types/socket-types";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL_WS = import.meta.env.VITE_API_BASE_URL_WS;
 
 export type TrackingDetailsProps = Readonly<{
   shipmentTrackingDetails: ShipmentTrackingDetails;
@@ -29,7 +29,10 @@ export function TrackingDetails({
   const auth = useAuth();
 
   const { lastJsonMessage } = useWebSocket<ShipmentStatusUpdate>(
-    `${API_BASE_URL}/ws/shipments/${shipmentTrackingDetails.shipmentId}/track?token=${auth.user?.token}`
+    `${API_BASE_URL_WS}/ws/shipments/${shipmentTrackingDetails.shipmentId}/track?token=${auth.user?.token}`,
+    {
+      shouldReconnect: () => true,
+    }
   );
 
   useEffect(() => {

@@ -3,22 +3,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { QuoteSection } from "@/pages/home/components/quote/quote-section";
 import { TrackingSection } from "@/pages/home/components/track/tracking-section";
 import { Package, Search } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export function Home() {
   const [shipmentCreatedId, setShipmentCreatedId] = useState("");
 
   const [activeTab, setActiveTab] = useState("quote");
-
-  useEffect(() => {
-    if (shipmentCreatedId) {
-      setActiveTab("track");
-
-      setTimeout(() => {
-        setShipmentCreatedId("");
-      }, 10000);
-    }
-  }, [shipmentCreatedId]);
 
   return (
     <>
@@ -54,6 +44,7 @@ export function Home() {
               <QuoteSection
                 onShipmentCreated={(shipmentId) => {
                   setShipmentCreatedId(shipmentId);
+                  setActiveTab("track");
                 }}
               />
             </TabsContent>

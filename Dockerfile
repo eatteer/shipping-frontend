@@ -13,6 +13,7 @@ RUN npm install
 COPY . .
 
 ENV VITE_API_BASE_URL="http://127.0.0.1:8080"
+ENV VITE_API_BASE_URL_WS="ws://127.0.0.1:8080"
 
 RUN npm run build
 

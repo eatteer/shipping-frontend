@@ -152,20 +152,7 @@ export function QuoteForm({ cities, onQuoteShipment }: QuoteFormProps) {
                   <FormItem>
                     <FormLabel>Weight (kg)</FormLabel>
                     <FormControl>
-                      <Input placeholder="12" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="packageLengthCm"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Length (cm)</FormLabel>
-                    <FormControl>
-                      <Input placeholder="12" {...field} />
+                      <Input type="number" placeholder="12" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -178,7 +165,7 @@ export function QuoteForm({ cities, onQuoteShipment }: QuoteFormProps) {
                   <FormItem>
                     <FormLabel>Width (cm)</FormLabel>
                     <FormControl>
-                      <Input placeholder="8" {...field} />
+                      <Input type="number" placeholder="8" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -191,14 +178,26 @@ export function QuoteForm({ cities, onQuoteShipment }: QuoteFormProps) {
                   <FormItem>
                     <FormLabel>Height (cm)</FormLabel>
                     <FormControl>
-                      <Input placeholder="6" {...field} />
+                      <Input type="number" placeholder="6" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="packageLengthCm"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Length (cm)</FormLabel>
+                    <FormControl>
+                      <Input type="number" placeholder="12" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
-
             <Button type="submit" className="w-full">
               Calculate quote
             </Button>
