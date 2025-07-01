@@ -57,7 +57,10 @@ export function SignInForm({ onSubmit }: SignInFormProps) {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form id="sign-in-form" onSubmit={form.handleSubmit(onSubmit)}>
+          <form
+            id="sign-in-form"
+            onSubmit={form.handleSubmit((values) => onSubmit(values))}
+          >
             <div className="flex flex-col gap-6">
               <FormField
                 control={form.control}
