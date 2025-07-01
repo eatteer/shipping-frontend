@@ -22,7 +22,7 @@ Navigate to the backend repository and follow the instructions in the README fil
 
 ```bash
 pnpm install
-pnpm run dev
+pnpm dev
 ```
 
 #### Environment configuration
